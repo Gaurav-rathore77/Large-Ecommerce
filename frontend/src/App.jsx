@@ -3,11 +3,14 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./App.css";
 import domain from "./common";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Context from "./context";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "./store/userSlice"; // ✅ Import Redux action
 
 function App() {
-    const [user, setUser] = useState(null);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user.user); // ✅ Get user from Redux
 
     const fetchUserDetails = async () => {
         try {
@@ -20,7 +23,7 @@ function App() {
             console.log(dataApi);
 
             if (dataApi.success) {
-                setUser(dataApi.data);
+                dispatch(setUser(dataApi.data)); // ✅ Dispatch to Redux
             }
         } catch (error) {
             console.error("Error fetching user:", error);

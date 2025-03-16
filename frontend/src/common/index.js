@@ -11,7 +11,19 @@ const domain = {
     userDetails :{
         url : `${domainApi}/api/user-details`,
         method : 'GET'
-    }
+    },
+    logout_user :{
+        url : `${domainApi}/api/userLogout`,
+        method : 'GET'
+    },
+    allUser :{
+        url : `${domainApi}/api/allUsers`,
+        method : 'GET'
+    },
+    updateUser : {
+        url : `${domainApi}/api/updateUser`,
+        method : "post"
+    },
 
 }
 export default domain
